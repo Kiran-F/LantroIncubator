@@ -1,0 +1,17 @@
+{
+  "name": "lantrospark-backend",
+  "version": "1.0.0",
+  "description": "LantroSpark backend — Express server proxying Gemini AI API",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.0",
+    "node-fetch": "^3.0.0"
+  }
+}

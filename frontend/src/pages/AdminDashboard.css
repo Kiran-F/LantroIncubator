@@ -1,0 +1,183 @@
+.admin-page { padding: 32px 0 60px; }
+
+.admin-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Metrics */
+.admin-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.metric-card {
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: var(--transition);
+}
+.metric-card:hover { transform: translateY(-3px); border-color: var(--border-accent); }
+
+.metric-icon { font-size: 28px; }
+.metric-value { font-size: 36px; font-weight: 800; color: var(--text-primary); }
+.metric-label { font-size: 13px; color: var(--text-secondary); font-weight: 500; }
+
+/* Trending */
+.trending-section { margin-bottom: 36px; }
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.trending-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.trending-card {
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: var(--transition);
+}
+.trending-card:hover { border-color: var(--border-accent); transform: translateX(4px); }
+
+.trending-rank {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--teal-light);
+  min-width: 32px;
+}
+
+.trending-info { flex: 1; }
+.trending-title { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+.trending-stats { font-size: 13px; color: var(--text-muted); }
+
+/* Kanban */
+.kanban-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.kanban-column {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  min-height: 300px;
+}
+
+.kanban-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.kanban-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.kanban-title { font-size: 14px; font-weight: 700; flex: 1; color: var(--text-secondary); }
+
+.kanban-count {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.kanban-cards { display: flex; flex-direction: column; gap: 10px; }
+
+.kanban-empty {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+  padding: 24px 0;
+}
+
+.kanban-card {
+  border-radius: var(--radius-md);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: var(--transition);
+}
+.kanban-card:hover { border-color: var(--border-accent); }
+
+.kanban-card-top { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.kanban-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: var(--transition);
+}
+.kanban-card-title:hover { color: var(--accent-light); }
+
+.kanban-card-stats {
+  display: flex;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.kanban-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.kanban-move-btn {
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: inherit;
+  transition: var(--transition);
+  text-align: left;
+}
+.kanban-move-btn:hover { border-color: var(--teal); color: var(--teal-light); }
+
+@media (max-width: 1200px) {
+  .kanban-board { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .admin-metrics { grid-template-columns: repeat(2, 1fr); }
+  .kanban-board { grid-template-columns: 1fr; }
+  .admin-header { flex-direction: column; }
+}

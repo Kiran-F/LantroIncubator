@@ -1,0 +1,39 @@
+# ── Environment variables — NEVER commit ──
+.env
+.env.local
+.env.production
+**/.env
+**/.env.local
+
+# ── Dependencies ──
+node_modules
+**/node_modules
+
+# ── Build output ──
+dist
+dist-ssr
+**/dist
+.vite
+**/.vite
+
+# ── Logs ──
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# ── Editor ──
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+Thumbs.db
+
+# ── Misc ──
+*.local
