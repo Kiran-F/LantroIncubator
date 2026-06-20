@@ -25,12 +25,17 @@ export default function IdeaDetail() {
   // Load idea
   useEffect(() => {
     async function load() {
-      const data = await getIdeaById(id);
-      if (!data) { navigate('/ideas'); return; }
-      setIdea(data);
-      const v = await hasUserVoted(id, user.uid);
-      setVoted(v);
-      setLoading(false);
+      try {
+        const data = await getIdeaById(id);
+        if (!data) { navigate('/ideas'); return; }
+        setIdea(data);
+        const v = await hasUserVoted(id, user.uid);
+        setVoted(v);
+      } catch (err) {
+        console.error("Failed to load idea detail:", err);
+      } finally {
+        setLoading(false);
+      }
     }
     load();
   }, [id, user.uid]);

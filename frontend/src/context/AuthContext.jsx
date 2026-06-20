@@ -13,9 +13,14 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser) {
-        const prof = await getUserProfile(firebaseUser.uid);
         setUser(firebaseUser);
-        setProfile(prof);
+        try {
+          const prof = await getUserProfile(firebaseUser.uid);
+          setProfile(prof || { name: firebaseUser.displayName || firebaseUser.email, email: firebaseUser.email, role: 'EMPLOYEE' });
+        } catch (err) {
+          console.warn("Failed to get profile, using offline fallback:", err);
+          setProfile({ name: firebaseUser.displayName || firebaseUser.email, email: firebaseUser.email, role: 'EMPLOYEE' });
+        }
       } else {
         setUser(null);
         setProfile(null);
@@ -27,15 +32,27 @@ export function AuthProvider({ children }) {
 
   async function register(name, email, password) {
     const u = await registerUser(name, email, password);
-    const prof = await getUserProfile(u.uid);
-    setProfile(prof);
+    setUser(u);
+    try {
+      const prof = await getUserProfile(u.uid);
+      setProfile(prof || { name, email, role: 'EMPLOYEE' });
+    } catch (err) {
+      console.warn("Failed to load profile on register, using offline fallback:", err);
+      setProfile({ name, email, role: 'EMPLOYEE' });
+    }
     return u;
   }
 
   async function login(email, password) {
     const u = await loginUser(email, password);
-    const prof = await getUserProfile(u.uid);
-    setProfile(prof);
+    setUser(u);
+    try {
+      const prof = await getUserProfile(u.uid);
+      setProfile(prof || { name: u.displayName || u.email, email: u.email, role: 'EMPLOYEE' });
+    } catch (err) {
+      console.warn("Failed to load profile on login, using offline fallback:", err);
+      setProfile({ name: u.displayName || u.email, email: u.email, role: 'EMPLOYEE' });
+    }
     return u;
   }
 
