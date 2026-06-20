@@ -68,7 +68,7 @@ export default function SubmitIdea() {
       );
 
       toast.success('🎉 Idea submitted successfully!');
-      navigate(`/ideas/${ideaId}`);
+      navigate('/ideas');
     } catch (err) {
       setError('Failed to submit idea. Please try again.');
       console.error(err);
