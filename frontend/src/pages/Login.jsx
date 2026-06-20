@@ -7,7 +7,7 @@ import './Auth.css';
 export default function Login() {
   const { user, login } = useAuth();
   const navigate = useNavigate();
-  const [form, setForm] = useState({ email: '', password: '' });
+  const [form, setForm] = useState({ email: 'admin@lantrotech.com', password: '123456' });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -48,6 +48,22 @@ export default function Login() {
           <Link to="/" className="auth-logo">💡 LantroSpark</Link>
           <h1 className="auth-title">Welcome back</h1>
           <p className="auth-subtitle">Sign in to your account to continue</p>
+        </div>
+
+        {/* Admin Test Account Helper Banner */}
+        <div style={{
+          background: 'rgba(219, 219, 53, 0.1)',
+          border: '1px solid rgba(219, 219, 53, 0.3)',
+          borderRadius: '8px',
+          padding: '10px 12px',
+          fontSize: '13px',
+          marginBottom: '16px',
+          color: 'var(--yellow)',
+          textAlign: 'center',
+          lineHeight: '1.4'
+        }}>
+          🔑 <strong>Admin Test Account:</strong><br />
+          Email: <code>admin@lantrotech.com</code> | Password: <code>123456</code>
         </div>
 
         {error && <div className="error-msg">{error}</div>}

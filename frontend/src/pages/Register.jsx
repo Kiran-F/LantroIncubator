@@ -56,6 +56,22 @@ export default function Register() {
           <p className="auth-subtitle">Join the Lantrotech innovation community</p>
         </div>
 
+        {/* Admin Test Account Helper Banner */}
+        <div style={{
+          background: 'rgba(219, 219, 53, 0.1)',
+          border: '1px solid rgba(219, 219, 53, 0.3)',
+          borderRadius: '8px',
+          padding: '10px 12px',
+          fontSize: '13px',
+          marginBottom: '16px',
+          color: 'var(--yellow)',
+          textAlign: 'center',
+          lineHeight: '1.4'
+        }}>
+          🔑 <strong>Admin Test Account:</strong><br />
+          Email: <code>admin@lantrotech.com</code> | Password: <code>123456</code>
+        </div>
+
         {error && <div className="error-msg">{error}</div>}
 
         <form onSubmit={handleSubmit} className="auth-form">
