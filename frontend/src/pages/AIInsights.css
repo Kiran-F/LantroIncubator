@@ -173,9 +173,9 @@
   font-weight: 800;
 }
 
-.complexity-low { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3); }
-.complexity-medium { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3); }
-.complexity-high { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
+.complexity-low { background: rgba(7,163,137,0.12); color: var(--teal); border: 1px solid rgba(7,163,137,0.35); }
+.complexity-medium { background: rgba(219,219,53,0.12); color: var(--yellow); border: 1px solid rgba(219,219,53,0.35); }
+.complexity-high { background: rgba(219,219,53,0.12); color: var(--yellow); border: 1px solid rgba(219,219,53,0.35); }
 
 /* Clusters */
 .clusters-grid {

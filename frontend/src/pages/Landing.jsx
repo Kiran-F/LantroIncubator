@@ -129,9 +129,9 @@ const FEATURES = [
 ];
 
 const PIPELINE = [
-  { label: 'Submitted', color: '#94a3b8' },
-  { label: 'Reviewing', color: '#f59e0b' },
-  { label: 'Approved', color: '#10b981' },
-  { label: 'Funding Allocated', color: '#3b82f6' },
-  { label: 'Archived', color: '#6b7280' },
+  { label: 'Submitted', color: 'rgba(7, 163, 137, 0.4)' },
+  { label: 'Reviewing', color: '#dbdb35' },
+  { label: 'Approved', color: '#07a389' },
+  { label: 'Funding Allocated', color: 'rgba(7, 163, 137, 0.8)' },
+  { label: 'Archived', color: 'rgba(7, 163, 137, 0.2)' },
 ];

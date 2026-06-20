@@ -200,7 +200,6 @@ export default function AIInsights() {
 }
 
 function getScoreColor(score) {
-  if (score >= 70) return '#10b981';
-  if (score >= 40) return '#f59e0b';
-  return '#ef4444';
+  if (score >= 70) return '#07a389';
+  return '#dbdb35';
 }

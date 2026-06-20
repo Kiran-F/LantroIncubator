@@ -60,7 +60,7 @@ export default function App() {
               borderRadius: '12px',
             },
             success: { iconTheme: { primary: '#07a389', secondary: '#fff' } },
-            error: { iconTheme: { primary: '#ef4444', secondary: '#fff' } },
+            error: { iconTheme: { primary: '#dbdb35', secondary: '#000000' } },
           }}
         />
       </BrowserRouter>
