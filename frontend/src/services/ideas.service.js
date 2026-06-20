@@ -26,20 +26,35 @@ export async function uploadAttachment(file, ideaId) {
 
 // ── Submit new idea ────────────────────────────────────────────────────────────
 export async function submitIdea(ideaData, file, user) {
-  const docRef = await addDoc(collection(db, 'ideas'), {
-    ...ideaData,
-    authorId: user.uid,
-    authorName: user.displayName || user.email,
-    status: 'REVIEWING',
-    voteCount: 0,
-    commentCount: 0,
-    attachmentUrl: null,
-    createdAt: serverTimestamp(),
-  });
+  const docRef = doc(collection(db, 'ideas'));
 
   if (file) {
     const url = await uploadAttachment(file, docRef.id);
-    await updateDoc(docRef, { attachmentUrl: url });
+    await setDoc(docRef, {
+      ...ideaData,
+      authorId: user.uid,
+      authorName: user.displayName || user.email,
+      status: 'REVIEWING',
+      voteCount: 0,
+      commentCount: 0,
+      attachmentUrl: url,
+      createdAt: serverTimestamp(),
+    });
+  } else {
+    // If no file, perform setDoc in background so it returns immediately
+    // and lets Firestore sync local cache asynchronously
+    setDoc(docRef, {
+      ...ideaData,
+      authorId: user.uid,
+      authorName: user.displayName || user.email,
+      status: 'REVIEWING',
+      voteCount: 0,
+      commentCount: 0,
+      attachmentUrl: null,
+      createdAt: serverTimestamp(),
+    }).catch((err) => {
+      console.error("Firestore background write failed:", err);
+    });
   }
 
   return docRef.id;
