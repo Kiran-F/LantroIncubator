@@ -18,9 +18,13 @@ app.use(express.json({ limit: '2mb' }));
 // ── Routes ────────────────────────────────────────────────────────────────────
 app.use('/api', insightsRouter);
 
-// ── Health check ──────────────────────────────────────────────────────────────
+// ── Health check & Root ───────────────────────────────────────────────────────
 app.get('/health', (_req, res) => {
   res.json({ status: 'ok', message: 'LantroSpark backend is running 🚀' });
+});
+
+app.get('/', (_req, res) => {
+  res.json({ status: 'ok', message: 'LantroSpark backend API is live 🚀' });
 });
 
 // ── 404 handler ───────────────────────────────────────────────────────────────
@@ -34,8 +38,12 @@ app.use((err, _req, res, _next) => {
   res.status(500).json({ error: 'Internal server error', message: err.message });
 });
 
-// ── Start ─────────────────────────────────────────────────────────────────────
-app.listen(PORT, () => {
-  console.log(`\n🚀 LantroSpark backend running at http://localhost:${PORT}`);
-  console.log(`   Health check: http://localhost:${PORT}/health\n`);
-});
+// ── Start (local dev) ─────────────────────────────────────────────────────────
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`\n🚀 LantroSpark backend running at http://localhost:${PORT}`);
+    console.log(`   Health check: http://localhost:${PORT}/health\n`);
+  });
+}
+
+export default app;
