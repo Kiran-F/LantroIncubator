@@ -1,7 +1,7 @@
 import { getAllIdeasForAI } from './ideas.service';
 
 // The backend Express server URL — Gemini API key lives there, not in the browser
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001';
+const BACKEND_URL = (import.meta.env.VITE_BACKEND_URL || 'https://lantro-incubator-ten.vercel.app').replace(/\/+$/, '');
 
 // ── Generate AI Insights ──────────────────────────────────────────────────────
 export async function generateInsights() {

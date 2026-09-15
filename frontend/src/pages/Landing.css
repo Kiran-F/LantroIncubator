@@ -709,7 +709,41 @@
   font-size: 14px;
   color: var(--text-secondary);
   line-height: 1.6;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
+}
+
+.minimal-stage-activities {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 14px 0 16px;
+  padding: 12px 16px;
+  background: rgba(7, 163, 137, 0.05);
+  border: 1px solid rgba(7, 163, 137, 0.16);
+  border-radius: var(--radius-md);
+}
+
+.minimal-stage-activity-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.activity-check {
+  color: var(--teal);
+  font-weight: 800;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(7, 163, 137, 0.15);
+  flex-shrink: 0;
 }
 
 .minimal-stage-bottom {

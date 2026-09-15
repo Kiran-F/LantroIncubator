@@ -209,7 +209,7 @@ export default function Landing() {
                   <span className="badge badge-category">Stage {activeStage + 1}</span>
                   <span className="badge badge-approved">{currentStageInfo.label}</span>
                 </div>
-                <h3 className="minimal-stage-headline">{currentStageInfo.tagline}</h3>
+                <h3 className="minimal-stage-headline">{currentStageInfo.headline}</h3>
               </div>
             </div>
 
@@ -220,12 +220,24 @@ export default function Landing() {
           </div>
 
           <p className="minimal-stage-summary">
-            {currentStageInfo.summary}
+            {currentStageInfo.description}
           </p>
+
+          {/* Activities list */}
+          {currentStageInfo.activities && (
+            <div className="minimal-stage-activities">
+              {currentStageInfo.activities.map((act, i) => (
+                <div key={i} className="minimal-stage-activity-item">
+                  <span className="activity-check">✓</span>
+                  <span>{act}</span>
+                </div>
+              ))}
+            </div>
+          )}
 
           <div className="minimal-stage-bottom">
             <span className="minimal-stage-keypoint">
-              <span className="keypoint-dot" /> {currentStageInfo.highlight}
+              <span className="keypoint-dot" /> <strong>Stage Simulation:</strong> {currentStageInfo.simulationOutcome}
             </span>
           </div>
         </div>
