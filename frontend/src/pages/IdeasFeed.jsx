@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { subscribeToIdeas } from '../services/ideas.service';
 import IdeaCard from '../components/IdeaCard';
 import './IdeasFeed.css';
@@ -9,6 +10,7 @@ const STATUSES = ['ALL', 'REVIEWING', 'APPROVED', 'FUNDING_ALLOCATED', 'ARCHIVED
 const PRIORITIES = ['ALL', 'HIGH', 'MEDIUM', 'LOW'];
 
 export default function IdeasFeed() {
+  const { isAdmin } = useAuth();
   const [ideas, setIdeas] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
@@ -55,9 +57,11 @@ export default function IdeasFeed() {
             <h1 className="page-title">Idea Feed</h1>
             <p className="page-subtitle">Explore and back ideas from across the organization</p>
           </div>
-          <Link to="/ideas/new" className="btn btn-primary" id="submit-idea-btn">
-            + Submit New Idea
-          </Link>
+          {!isAdmin && (
+            <Link to="/ideas/new" className="btn btn-primary" id="submit-idea-btn">
+              + Submit New Idea
+            </Link>
+          )}
         </div>
 
         {/* Filters Bar */}
@@ -150,9 +154,11 @@ export default function IdeasFeed() {
             <div className="empty-icon">💡</div>
             <h3>No ideas found</h3>
             <p>Try adjusting your filters, or be the first to submit an idea!</p>
-            <Link to="/ideas/new" className="btn btn-primary" style={{ marginTop: 16 }}>
-              Submit the First Idea
-            </Link>
+            {!isAdmin && (
+              <Link to="/ideas/new" className="btn btn-primary" style={{ marginTop: 16 }}>
+                Submit the First Idea
+              </Link>
+            )}
           </div>
         ) : (
           <div className="ideas-grid">

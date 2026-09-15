@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import './Landing.css';
 
 export default function Landing() {
-  const { user } = useAuth();
+  const { user, isAdmin } = useAuth();
   const [activeStage, setActiveStage] = useState(0);
   const [mockVotes, setMockVotes] = useState(42);
   const [hasVotedMock, setHasVotedMock] = useState(false);
@@ -49,7 +49,9 @@ export default function Landing() {
               {user ? (
                 <>
                   <Link to="/ideas" className="btn btn-primary btn-lg">Browse Ideas Feed →</Link>
-                  <Link to="/ideas/new" className="btn btn-secondary btn-lg">+ Submit Your Idea</Link>
+                  {!isAdmin && (
+                    <Link to="/ideas/new" className="btn btn-secondary btn-lg">+ Submit Your Idea</Link>
+                  )}
                 </>
               ) : (
                 <>
@@ -256,7 +258,11 @@ export default function Landing() {
           </p>
           <div className="cta-buttons">
             {user ? (
-              <Link to="/ideas/new" className="btn btn-primary btn-lg">Submit Your Idea Now 🚀</Link>
+              !isAdmin ? (
+                <Link to="/ideas/new" className="btn btn-primary btn-lg">Submit Your Idea Now 🚀</Link>
+              ) : (
+                <Link to="/ideas" className="btn btn-primary btn-lg">Explore Ideas Feed →</Link>
+              )
             ) : (
               <>
                 <Link to="/register" className="btn btn-primary btn-lg">Join LantroSpark Free →</Link>

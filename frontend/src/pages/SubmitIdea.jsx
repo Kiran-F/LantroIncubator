@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { submitIdea } from '../services/ideas.service';
@@ -16,13 +16,20 @@ const EMPTY_FORM = {
 const STEPS = ['Basic Info', 'Details & Budget', 'Tags & Submit'];
 
 export default function SubmitIdea() {
-  const { user } = useAuth();
+  const { user, isAdmin } = useAuth();
   const navigate = useNavigate();
   const [step, setStep] = useState(0);
   const [form, setForm] = useState(EMPTY_FORM);
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    if (isAdmin) {
+      toast.error('Admins manage the pipeline and cannot submit proposals directly.');
+      navigate('/admin', { replace: true });
+    }
+  }, [isAdmin, navigate]);
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });

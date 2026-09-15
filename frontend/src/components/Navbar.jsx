@@ -68,9 +68,11 @@ export default function Navbar() {
 
           {user ? (
             <>
-              <Link to="/ideas/new" className="btn btn-primary btn-sm">
-                + Submit Idea
-              </Link>
+              {!isAdmin && (
+                <Link to="/ideas/new" className="btn btn-primary btn-sm">
+                  + Submit Idea
+                </Link>
+              )}
               <div className="navbar-user">
                 <div className="navbar-avatar">
                   {(user.displayName || user.email)?.[0]?.toUpperCase()}
