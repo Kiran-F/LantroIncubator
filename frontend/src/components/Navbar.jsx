@@ -43,7 +43,7 @@ export default function Navbar() {
             <Link to="/ideas" className="navbar-link">Ideas</Link>
             {isAdmin && <Link to="/admin" className="navbar-link">Dashboard</Link>}
             {isAdmin && <Link to="/admin/insights" className="navbar-link navbar-link-ai">
-              ✨ AI Insights
+              AI Insights
             </Link>}
           </div>
         )}
@@ -51,8 +51,8 @@ export default function Navbar() {
         {/* Right side */}
         <div className="navbar-right">
           {/* Theme Toggle Button */}
-          <button 
-            className="theme-toggle-btn" 
+          <button
+            className="theme-toggle-btn"
             onClick={toggleTheme}
             title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
             aria-label="Toggle Theme"

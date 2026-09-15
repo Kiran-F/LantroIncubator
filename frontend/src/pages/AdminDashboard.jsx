@@ -60,7 +60,7 @@ export default function AdminDashboard() {
             <p className="page-subtitle">Manage the innovation pipeline across Lantrotech</p>
           </div>
           <Link to="/admin/insights" className="btn btn-primary" id="go-to-insights-btn">
-            ✨ Generate AI Insights
+            Generate AI Insights
           </Link>
         </div>
 

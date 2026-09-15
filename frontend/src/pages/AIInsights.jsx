@@ -27,7 +27,7 @@ export default function AIInsights() {
         {/* Header */}
         <div className="page-header insights-header">
           <div>
-            <h1 className="page-title">✨ AI Insights</h1>
+            <h1 className="page-title">AI Insights</h1>
             <p className="page-subtitle">
               Powered by Google Gemini — real-time analysis of all ideas, votes, and comments
             </p>
@@ -40,7 +40,7 @@ export default function AIInsights() {
           >
             {loading
               ? <><span className="spinner" style={{ width: 18, height: 18, borderWidth: 2 }} /> Analyzing...</>
-              : '✨ Generate Insights'}
+              : 'Generate Insights'}
           </button>
         </div>
 
