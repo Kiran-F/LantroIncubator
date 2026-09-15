@@ -37,6 +37,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
+  z-index: 0;
 }
 
 .hero-orb {
@@ -45,6 +46,7 @@
   filter: blur(140px);
   opacity: 0.22;
   animation: float 8s ease-in-out infinite;
+  z-index: 0;
 }
 
 .hero-orb-1 {
@@ -67,10 +69,23 @@
 .hero-grid {
   position: absolute;
   inset: 0;
+  z-index: 0;
   background-image:
-    linear-gradient(rgba(7, 163, 137, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(7, 163, 137, 0.05) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(rgba(0, 0, 0, 0.18) 1.5px, transparent 1.5px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.18) 1.5px, transparent 1.5px);
+  background-size: 44px 44px;
+}
+
+[data-theme="dark"] .hero-grid {
+  background-image:
+    linear-gradient(rgba(3, 133, 111, 0.22) 1.5px, transparent 1.5px),
+    linear-gradient(90deg, rgba(3, 141, 118, 0.22) 1.5px, transparent 1.5px);
+}
+
+[data-theme="light"] .hero-grid {
+  background-image:
+    linear-gradient(rgba(160, 160, 160, 0.18) 1.5px, transparent 1.5px),
+    linear-gradient(90deg, rgba(160, 160, 160, 0.18) 1.5px, transparent 1.5px);
 }
 
 .hero-container {
@@ -79,13 +94,15 @@
   gap: 48px;
   align-items: center;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero-content {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-badge {
@@ -171,13 +188,14 @@
   background: var(--border);
 }
 
-/* ── Hero Preview Floating Card ── */
 .hero-preview-wrapper {
   position: relative;
   perspective: 1000px;
+  z-index: 2;
 }
 
 .preview-floating-card {
+  background: var(--bg-primary);
   border-radius: var(--radius-xl);
   padding: 30px;
   border: 1px solid rgba(7, 163, 137, 0.35);
@@ -185,6 +203,17 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
+  z-index: 2;
+}
+
+[data-theme="light"] .preview-floating-card {
+  background: #ffffff;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1), 0 0 25px rgba(7, 163, 137, 0.1);
+}
+
+[data-theme="dark"] .preview-floating-card {
+  background: #000000;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6), 0 0 30px rgba(7, 163, 137, 0.2);
 }
 
 .preview-floating-card::before {
@@ -303,6 +332,11 @@
   display: block;
 }
 
+.preview-vote-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
 .preview-vote-btn {
   display: inline-flex;
   align-items: center;
@@ -316,6 +350,9 @@
   font-weight: 700;
   cursor: pointer;
   transition: var(--transition);
+  position: relative;
+  z-index: 2;
+  user-select: none;
 }
 
 .preview-vote-btn:hover {
@@ -329,6 +366,145 @@
   color: white;
   border-color: var(--teal);
   box-shadow: 0 0 16px var(--teal-glow);
+  animation: votePop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes votePop {
+  0% { transform: scale(0.92); }
+  50% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+/* ── Celebration / Fireworks Burst ── */
+.celebration-burst {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+/* Expanding Shockwave Ring */
+.celebration-ring {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--teal);
+  opacity: 0.9;
+  animation: shockwaveExpand 0.7s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes shockwaveExpand {
+  0% {
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+    border-color: var(--yellow);
+    box-shadow: 0 0 12px var(--yellow-glow);
+  }
+  50% {
+    opacity: 0.75;
+    border-color: var(--teal);
+  }
+  100% {
+    width: 140px;
+    height: 140px;
+    opacity: 0;
+    border-color: var(--teal);
+  }
+}
+
+/* Radial Firework Sparks */
+.firework-spark {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: sparkBurst 0.65s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+}
+
+.spark-1 { background: var(--teal);   --tx:   0px; --ty: -42px; animation-delay: 0.01s; }
+.spark-2 { background: var(--yellow); --tx:  32px; --ty: -30px; animation-delay: 0.03s; }
+.spark-3 { background: #ffffff;       --tx:  44px; --ty:   0px; animation-delay: 0.01s; }
+.spark-4 { background: var(--teal);   --tx:  32px; --ty:  30px; animation-delay: 0.02s; }
+.spark-5 { background: var(--yellow); --tx:   0px; --ty:  40px; animation-delay: 0.02s; }
+.spark-6 { background: #ffffff;       --tx: -32px; --ty:  30px; animation-delay: 0.04s; }
+.spark-7 { background: var(--teal);   --tx: -44px; --ty:   0px; animation-delay: 0.01s; }
+.spark-8 { background: var(--yellow); --tx: -32px; --ty: -30px; animation-delay: 0.03s; }
+
+@keyframes sparkBurst {
+  0% {
+    transform: translate(0, 0) scale(1.4);
+    opacity: 1;
+    box-shadow: 0 0 10px currentColor;
+  }
+  70% {
+    opacity: 0.9;
+    transform: translate(var(--tx), var(--ty)) scale(1);
+  }
+  100% {
+    transform: translate(calc(var(--tx) * 1.2), calc(var(--ty) * 1.2)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Floating Sparkles & +1 Badge */
+.celebration-float {
+  position: absolute;
+  font-size: 15px;
+  animation: floatUpBurst 0.8s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+  pointer-events: none;
+}
+
+.float-1 { --fx: -26px; --fy: -46px; font-size: 16px; animation-delay: 0.03s; }
+.float-2 { --fx:  28px; --fy: -48px; font-size: 15px; animation-delay: 0.01s; }
+.float-3 { --fx:  38px; --fy: -16px; font-size: 17px; animation-delay: 0.05s; }
+
+.float-badge {
+  --fx: 0px;
+  --fy: -52px;
+  font-size: 12px;
+  font-weight: 900;
+  color: var(--yellow);
+  text-shadow: 0 0 10px rgba(219, 219, 53, 0.8);
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid var(--yellow);
+  padding: 1px 6px;
+  border-radius: 99px;
+  animation: floatBadgeUp 0.85s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+}
+
+@keyframes floatUpBurst {
+  0% {
+    transform: translate(0, 0) scale(0.4) rotate(0deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+    transform: translate(calc(var(--fx) * 0.6), calc(var(--fy) * 0.6)) scale(1.2) rotate(15deg);
+  }
+  100% {
+    transform: translate(var(--fx), var(--fy)) scale(0.6) rotate(-15deg);
+    opacity: 0;
+  }
+}
+
+@keyframes floatBadgeUp {
+  0% {
+    transform: translate(0, 0) scale(0.5);
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+    transform: translate(0, -32px) scale(1.15);
+  }
+  100% {
+    transform: translate(0, -56px) scale(0.9);
+    opacity: 0;
+  }
 }
 
 .preview-hint {
@@ -566,6 +742,7 @@
     flex-direction: column;
     align-items: flex-start;
   }
+
   .minimal-role-badge {
     align-items: flex-start;
   }
@@ -731,10 +908,12 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
+
   .stage-inspector-grid {
     grid-template-columns: 1fr;
     gap: 28px;
   }
+
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -744,24 +923,30 @@
   .hero {
     padding: 100px 0 50px;
   }
+
   .features-grid {
     grid-template-columns: 1fr;
   }
+
   .stepper-steps {
     overflow-x: auto;
     padding-bottom: 12px;
     gap: 16px;
     justify-content: flex-start;
   }
+
   .stepper-track-bg {
     display: none;
   }
+
   .stage-inspector-card {
     padding: 24px;
   }
+
   .cta-card {
     padding: 40px 20px;
   }
+
   .footer-container {
     flex-direction: column;
     text-align: center;

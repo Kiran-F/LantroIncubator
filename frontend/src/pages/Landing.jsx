@@ -8,8 +8,12 @@ export default function Landing() {
   const [activeStage, setActiveStage] = useState(0);
   const [mockVotes, setMockVotes] = useState(42);
   const [hasVotedMock, setHasVotedMock] = useState(false);
+  const [celebrationKey, setCelebrationKey] = useState(0);
 
   function handleMockVote() {
+    if (!hasVotedMock) {
+      setCelebrationKey((prev) => prev + 1);
+    }
     setHasVotedMock(!hasVotedMock);
     setMockVotes((prev) => (hasVotedMock ? prev - 1 : prev + 1));
   }
@@ -104,20 +108,45 @@ export default function Landing() {
                 <div className="preview-author">
                   <div className="preview-avatar">K</div>
                   <div>
-                    <span className="preview-name">Kiran Farooq</span>
+                    <span className="preview-name">Klara</span>
                     <span className="preview-date">AI Innovation Lead</span>
                   </div>
                 </div>
 
-                <button
-                  className={`preview-vote-btn ${hasVotedMock ? 'voted' : ''}`}
-                  onClick={handleMockVote}
-                  title="Click to test live voting!"
-                >
-                  <span>🚀</span>
-                  <span>{hasVotedMock ? 'Backed!' : 'Back Idea'}</span>
-                  <strong>{mockVotes}</strong>
-                </button>
+                <div className="preview-vote-wrapper">
+                  <button
+                    className={`preview-vote-btn ${hasVotedMock ? 'voted' : ''}`}
+                    onClick={handleMockVote}
+                    title="Click to test live voting!"
+                  >
+                    <span className="btn-icon-rocket">📈</span>
+                    <span>{hasVotedMock ? 'Backed!' : 'Back Idea'}</span>
+                    <strong>{mockVotes}</strong>
+                  </button>
+
+                  {celebrationKey > 0 && (
+                    <div key={celebrationKey} className="celebration-burst" aria-hidden="true">
+                      {/* Radial firework sparks */}
+                      <span className="firework-spark spark-1" />
+                      <span className="firework-spark spark-2" />
+                      <span className="firework-spark spark-3" />
+                      <span className="firework-spark spark-4" />
+                      <span className="firework-spark spark-5" />
+                      <span className="firework-spark spark-6" />
+                      <span className="firework-spark spark-7" />
+                      <span className="firework-spark spark-8" />
+
+                      {/* Floating celebratory sparkles & badges */}
+                      <span className="celebration-float float-1">✨</span>
+                      <span className="celebration-float float-2">⭐</span>
+                      <span className="celebration-float float-3">🎉</span>
+                      <span className="celebration-float float-badge">+1</span>
+
+                      {/* Shockwave ring */}
+                      <div className="celebration-ring" />
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* Live interaction hint */}
