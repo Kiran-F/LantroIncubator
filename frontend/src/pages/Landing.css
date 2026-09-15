@@ -370,9 +370,17 @@
 }
 
 @keyframes votePop {
-  0% { transform: scale(0.92); }
-  50% { transform: scale(1.12); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(0.92);
+  }
+
+  50% {
+    transform: scale(1.12);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* ── Celebration / Fireworks Burst ── */
@@ -405,10 +413,12 @@
     border-color: var(--yellow);
     box-shadow: 0 0 12px var(--yellow-glow);
   }
+
   50% {
     opacity: 0.75;
     border-color: var(--teal);
   }
+
   100% {
     width: 140px;
     height: 140px;
@@ -426,14 +436,61 @@
   animation: sparkBurst 0.65s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
 }
 
-.spark-1 { background: var(--teal);   --tx:   0px; --ty: -42px; animation-delay: 0.01s; }
-.spark-2 { background: var(--yellow); --tx:  32px; --ty: -30px; animation-delay: 0.03s; }
-.spark-3 { background: #ffffff;       --tx:  44px; --ty:   0px; animation-delay: 0.01s; }
-.spark-4 { background: var(--teal);   --tx:  32px; --ty:  30px; animation-delay: 0.02s; }
-.spark-5 { background: var(--yellow); --tx:   0px; --ty:  40px; animation-delay: 0.02s; }
-.spark-6 { background: #ffffff;       --tx: -32px; --ty:  30px; animation-delay: 0.04s; }
-.spark-7 { background: var(--teal);   --tx: -44px; --ty:   0px; animation-delay: 0.01s; }
-.spark-8 { background: var(--yellow); --tx: -32px; --ty: -30px; animation-delay: 0.03s; }
+.spark-1 {
+  background: var(--teal);
+  --tx: 0px;
+  --ty: -42px;
+  animation-delay: 0.01s;
+}
+
+.spark-2 {
+  background: var(--yellow);
+  --tx: 32px;
+  --ty: -30px;
+  animation-delay: 0.03s;
+}
+
+.spark-3 {
+  background: #ffffff;
+  --tx: 44px;
+  --ty: 0px;
+  animation-delay: 0.01s;
+}
+
+.spark-4 {
+  background: var(--teal);
+  --tx: 32px;
+  --ty: 30px;
+  animation-delay: 0.02s;
+}
+
+.spark-5 {
+  background: var(--yellow);
+  --tx: 0px;
+  --ty: 40px;
+  animation-delay: 0.02s;
+}
+
+.spark-6 {
+  background: #ffffff;
+  --tx: -32px;
+  --ty: 30px;
+  animation-delay: 0.04s;
+}
+
+.spark-7 {
+  background: var(--teal);
+  --tx: -44px;
+  --ty: 0px;
+  animation-delay: 0.01s;
+}
+
+.spark-8 {
+  background: var(--yellow);
+  --tx: -32px;
+  --ty: -30px;
+  animation-delay: 0.03s;
+}
 
 @keyframes sparkBurst {
   0% {
@@ -441,10 +498,12 @@
     opacity: 1;
     box-shadow: 0 0 10px currentColor;
   }
+
   70% {
     opacity: 0.9;
     transform: translate(var(--tx), var(--ty)) scale(1);
   }
+
   100% {
     transform: translate(calc(var(--tx) * 1.2), calc(var(--ty) * 1.2)) scale(0);
     opacity: 0;
@@ -459,9 +518,26 @@
   pointer-events: none;
 }
 
-.float-1 { --fx: -26px; --fy: -46px; font-size: 16px; animation-delay: 0.03s; }
-.float-2 { --fx:  28px; --fy: -48px; font-size: 15px; animation-delay: 0.01s; }
-.float-3 { --fx:  38px; --fy: -16px; font-size: 17px; animation-delay: 0.05s; }
+.float-1 {
+  --fx: -26px;
+  --fy: -46px;
+  font-size: 16px;
+  animation-delay: 0.03s;
+}
+
+.float-2 {
+  --fx: 28px;
+  --fy: -48px;
+  font-size: 15px;
+  animation-delay: 0.01s;
+}
+
+.float-3 {
+  --fx: 38px;
+  --fy: -16px;
+  font-size: 17px;
+  animation-delay: 0.05s;
+}
 
 .float-badge {
   --fx: 0px;
@@ -482,10 +558,12 @@
     transform: translate(0, 0) scale(0.4) rotate(0deg);
     opacity: 0;
   }
+
   30% {
     opacity: 1;
     transform: translate(calc(var(--fx) * 0.6), calc(var(--fy) * 0.6)) scale(1.2) rotate(15deg);
   }
+
   100% {
     transform: translate(var(--fx), var(--fy)) scale(0.6) rotate(-15deg);
     opacity: 0;
@@ -497,10 +575,12 @@
     transform: translate(0, 0) scale(0.5);
     opacity: 0;
   }
+
   35% {
     opacity: 1;
     transform: translate(0, -32px) scale(1.15);
   }
+
   100% {
     transform: translate(0, -56px) scale(0.9);
     opacity: 0;
