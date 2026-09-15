@@ -1,0 +1,118 @@
+.my-ideas-page {
+  padding-bottom: 60px;
+}
+
+.my-ideas-header {
+  margin-bottom: 24px;
+}
+
+.my-ideas-badge-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  background: rgba(7, 163, 137, 0.12);
+  border: 1px solid rgba(7, 163, 137, 0.3);
+  color: var(--teal-light, #07a389);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+/* Stats Row */
+.my-ideas-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.my-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  border-radius: var(--radius-md, 12px);
+  background: var(--bg-card, rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--border, rgba(255, 255, 255, 0.08));
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.my-stat-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(7, 163, 137, 0.4);
+  box-shadow: 0 4px 16px rgba(7, 163, 137, 0.1);
+}
+
+.my-stat-icon {
+  font-size: 26px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(7, 163, 137, 0.1);
+  border: 1px solid rgba(7, 163, 137, 0.2);
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.my-stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.my-stat-val {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-primary, #ffffff);
+  line-height: 1.2;
+}
+
+.my-stat-lbl {
+  font-size: 12px;
+  color: var(--text-secondary, #9ca3af);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* Empty State */
+.my-ideas-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 24px;
+  border-radius: var(--radius-lg, 16px);
+  background: var(--bg-card, rgba(255, 255, 255, 0.03));
+  border: 1px dashed rgba(7, 163, 137, 0.35);
+  margin-top: 20px;
+}
+
+.my-ideas-empty-icon {
+  font-size: 54px;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 16px rgba(219, 219, 53, 0.4));
+}
+
+.my-ideas-empty-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary, #ffffff);
+  margin-bottom: 8px;
+}
+
+.my-ideas-empty-desc {
+  font-size: 14px;
+  color: var(--text-secondary, #9ca3af);
+  max-width: 460px;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .my-ideas-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

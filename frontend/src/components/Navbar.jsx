@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
 import './Navbar.css';
@@ -40,11 +40,38 @@ export default function Navbar() {
         {/* Nav Links */}
         {user && (
           <div className="navbar-links">
-            <Link to="/ideas" className="navbar-link">Ideas</Link>
-            {isAdmin && <Link to="/admin" className="navbar-link">Dashboard</Link>}
-            {isAdmin && <Link to="/admin/insights" className="navbar-link navbar-link-ai">
-              AI Insights
-            </Link>}
+            <NavLink
+              to="/ideas"
+              end
+              className={({ isActive }) => `navbar-link ${isActive ? 'active' : ''}`}
+            >
+              Ideas
+            </NavLink>
+            {!isAdmin && (
+              <NavLink
+                to="/my-ideas"
+                className={({ isActive }) => `navbar-link ${isActive ? 'active' : ''}`}
+              >
+                My Ideas
+              </NavLink>
+            )}
+            {isAdmin && (
+              <NavLink
+                to="/admin"
+                end
+                className={({ isActive }) => `navbar-link ${isActive ? 'active' : ''}`}
+              >
+                Dashboard
+              </NavLink>
+            )}
+            {isAdmin && (
+              <NavLink
+                to="/admin/insights"
+                className={({ isActive }) => `navbar-link navbar-link-ai ${isActive ? 'active' : ''}`}
+              >
+                AI Insights
+              </NavLink>
+            )}
           </div>
         )}
 

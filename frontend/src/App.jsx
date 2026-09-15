@@ -8,6 +8,7 @@ import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import IdeasFeed from './pages/IdeasFeed';
+import MyIdeas from './pages/MyIdeas';
 import SubmitIdea from './pages/SubmitIdea';
 import IdeaDetail from './pages/IdeaDetail';
 import AdminDashboard from './pages/AdminDashboard';
@@ -27,6 +28,9 @@ export default function App() {
           {/* Authenticated */}
           <Route path="/ideas" element={
             <ProtectedRoute><IdeasFeed /></ProtectedRoute>
+          } />
+          <Route path="/my-ideas" element={
+            <ProtectedRoute><MyIdeas /></ProtectedRoute>
           } />
           <Route path="/ideas/new" element={
             <ProtectedRoute><SubmitIdea /></ProtectedRoute>
